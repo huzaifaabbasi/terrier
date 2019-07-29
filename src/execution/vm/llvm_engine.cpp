@@ -490,7 +490,7 @@ void LLVMEngine::CompiledModuleBuilder::BuildSimpleCFG(const FunctionInfo &func_
               iter.GetPosition() + Bytecodes::GetNthOperandOffset(bytecode, 0) + iter.GetJumpOffsetOperand(0);
 
           if (blocks->find(branch_target_pos) == blocks->end()) {
-            blocks->at(branch_target_pos) = nullptr;
+            (*blocks)[branch_target_pos] = nullptr;
             bb_begin_positions.push_back(branch_target_pos);
           }
         }
@@ -504,7 +504,7 @@ void LLVMEngine::CompiledModuleBuilder::BuildSimpleCFG(const FunctionInfo &func_
 
         if (blocks->find(fallthrough_pos) == blocks->end()) {
           bb_begin_positions.push_back(fallthrough_pos);
-          blocks->at(fallthrough_pos) = nullptr;
+          (*blocks)[fallthrough_pos] = nullptr;
         }
 
         std::size_t branch_target_pos =
@@ -512,7 +512,7 @@ void LLVMEngine::CompiledModuleBuilder::BuildSimpleCFG(const FunctionInfo &func_
 
         if (blocks->find(branch_target_pos) == blocks->end()) {
           bb_begin_positions.push_back(branch_target_pos);
-          blocks->at(branch_target_pos) = nullptr;
+          (*blocks)[branch_target_pos] = nullptr;
         }
 
         break;

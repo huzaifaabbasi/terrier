@@ -5,6 +5,7 @@
 
 #include "execution/util/common.h"
 
+#include "execution/exec/execution_context.h"
 #include "execution/sql/aggregation_hash_table.h"
 #include "execution/sql/aggregators.h"
 #include "execution/sql/join_hash_table.h"
